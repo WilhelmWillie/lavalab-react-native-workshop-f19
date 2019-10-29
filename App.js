@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Button, View, FlatList } from 'react-native';
+import { Text, TextInput, Button, View, FlatList } from 'react-native';
 
 function Game(props) {
   return (
@@ -39,7 +39,13 @@ export default function App() {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={{
+        display: 'flex',
+        backgroundColor: '#276092',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 50,
+      }}>
         <View 
           style={{
             width: '100%',
@@ -80,13 +86,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    backgroundColor: '#276092',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 50,
-  },
-});
