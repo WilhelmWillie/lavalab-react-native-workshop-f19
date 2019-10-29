@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, Button, View, FlatList } from 'react-native';
 
+function Game(props) {
+  return (
+    <View style={{ paddingLeft: 30, paddingRight: 30, paddingTop: 30, paddingBottom: 0, }}>
+      <View style={{ padding: 30, backgroundColor: '#FFFFFF', }}>
+        <Text style={{fontSize: 20}}>Home: {props.homeTeam} ({props.homePoints || 'TBD'})</Text>
+        <Text style={{fontSize: 20}}>Away: {props.awayTeam} ({props.awayPoints || 'TBD'})</Text>
+      </View>
+    </View>
+  )
+}
+
 export default function App() {
   const [team, setTeam] = useState('');
   const [gameData, setGameData] = useState(null);
@@ -21,15 +32,7 @@ export default function App() {
 
   const renderGame = (game) => {
     const { home_team, away_team, home_points, away_points } = game.item;
-
-    return (
-      <View style={{ paddingLeft: 30, paddingRight: 30, paddingTop: 30, paddingBottom: 0, }}>
-        <View style={{ padding: 30, backgroundColor: '#FFFFFF', }}>
-          <Text style={{fontSize: 20}}>Home: {home_team} ({home_points || 'TBD'})</Text>
-          <Text style={{fontSize: 20}}>Away: {away_team} ({away_points || 'TBD'})</Text>
-        </View>
-      </View>
-    )
+    return <Game homeTeam={home_team} awayTeam={away_team} homePoints={home_points} awayPoints={away_points} />
   }
 
   const getGameKey = (game) => game.id.toString();
